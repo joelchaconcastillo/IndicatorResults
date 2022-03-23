@@ -1,0 +1,2 @@
+/usr/local/lib/python2.7/dist-packages/scipy/stats/morestats.py:1307: UserWarning: Input data for shapiro has range zero. The results may not be accurate.
+  warnings.warn("Input data for shapiro has range zero. The results "
