@@ -1,0 +1,12 @@
+rm *pdf *ps *dpth *log *dvi *aux *lock *md5
+#for i in Graphic-Final-Distance_tikz 
+for i in GDiversity_tikz
+#for i in Time_tikz
+#for i in Diagram_tikz Graphic-Initial-Distance_tikz Graphic-Scalability-3obj_tikz Graphic-Diversity_2obj_tikz Graphic-Diversity_3obj_tikz Graphic-Scalability-2obj_tikz Time_tikz
+#for i in Time_tikz
+do
+   latex --shell-escape $i.tex
+ #  ps2pdf -dNOSAFER $i-figure0.ps
+#   ps2pdf -dNOSAFER $i-figure1.ps
+done
+#rm *.ps *dpth *log *dvi *aux *lock *md5

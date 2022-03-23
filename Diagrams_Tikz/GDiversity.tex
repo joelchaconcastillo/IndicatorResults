@@ -1,0 +1,30 @@
+
+\begin{tikzpicture}[scale=0.8]
+\begin{axis}[
+title={\textit{\textbf{Diversity of the Distance Variables with Two Objectives on DTLZ2}}},
+  xlabel=Function Evaluations,
+  ylabel=ADI,
+%  xlabel style={yshift=-0.2cm},
+    ymax=0.6,
+   ytick={ 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6},
+%   yticklabels={$0$,$\frac{\pi}{2}$,$\pi$,$\frac{3\pi}{2}$},
+  xticklabel style = {rotate=30},
+  legend style=
+    {cells={anchor=east},legend pos=outer north east,}, nodes={scale=0.8, transform shape}    ,
+  xticklabels from table={\DiversityTwoWFG}{mean},xtick=data]
+
+\addplot[red,dotted,mark=square*] table [y=VSD_HV_Distance,x=X]{\DiversityTwoWFGTwo};
+	\addlegendentry{VSD-SMS-MOEA}
+\addplot[red,dotted,mark=square*] table [y=VSD_R2_Distance,x=X]{\DiversityTwoWFGTwo};
+	\addlegendentry{VSD-R2-MOEA}
+
+
+\addplot[blue,dotted,mark=triangle*] table[y= SMS_EMOA_Distance,x=X]{\DiversityTwoWFGTwo};
+	\addlegendentry{SMS-EMOA}
+		
+\addplot[orange,dotted,mark=diamond*] table [y= R2_EMOA_Distance,x=X]{\DiversityTwoWFGTwo};
+	\addlegendentry{R2-EMOA}
+    
+\end{axis}
+\end{tikzpicture}
+

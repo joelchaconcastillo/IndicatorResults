@@ -1,0 +1,248 @@
+\documentclass{article}
+%\usepackage{tikz}
+
+\usepackage{pgfplots,pgfplotstable}
+%\usepackage[pdftex]{graphicx} 
+% set up externalization
+\usetikzlibrary{external}
+
+\pgfplotsset{compat=1.3}
+
+\pgfplotstableread[col sep = comma]{CSV/Diversity2objWFG2.csv}\DiversityTwoWFGTwo
+\pgfplotstableread[col sep = comma]{CSV/Diversity3objWFG2.csv}\DiversityThreeWFGTwo
+\pgfplotstableread[col sep = comma]{CSV/Diversity2objWFG8.csv}\DiversityTwoWFGEight
+\pgfplotstableread[col sep = comma]{CSV/Diversity3objWFG8.csv}\DiversityThreeWFGEight
+\pgfplotstableread[col sep = comma]{CSV/Diversity2objDTLZ6.csv}\DiversityTwoDTLZSix
+\pgfplotstableread[col sep = comma]{CSV/Diversity3objDTLZ6.csv}\DiversityThreeDTLZSix
+\pgfplotstableread[col sep = comma]{CSV/Diversity2objUF5.csv}\DiversityUFfive
+\pgfplotstableread[col sep = comma]{CSV/Diversity2objUF5.csv}\DiversityUFseven
+
+
+
+
+\tikzset{external/system call={latex \tikzexternalcheckshellescape -halt-on-error
+-interaction=batchmode -jobname "\image" "\texsource";
+dvips -o "\image".ps "\image".dvi;
+ps2eps "\image.ps"}}
+\tikzexternalize
+
+
+\begin{document}
+\begin{tikzpicture}[scale=0.8]
+\begin{axis}[
+title={\textit{\textbf{Diversity of the Distance Variables with Two Objectives in WFG2}}},
+  xlabel=Function Evaluations,
+  ylabel=ADI,
+    ymax=0.6,
+   ytick={ 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6},
+  xticklabel style = {rotate=30},
+  legend style=
+    {cells={anchor=east},legend pos=outer north east,}, nodes={scale=0.8, transform shape}    ,
+  xticklabels from table={\DiversityTwoWFGTwo}{mean},xtick=data]
+
+\addplot[black,mark=o] table [y=VSD_HV_Distance,x=X]{\DiversityTwoWFGTwo};
+	\addlegendentry{VSD-SMS-EMOA}
+\addplot[red,dotted,mark=square*] table [y=VSD_R2_Distance,x=X]{\DiversityTwoWFGTwo};
+	\addlegendentry{VSD-R2-EMOA}
+
+
+\addplot[blue,dotted,mark=triangle*] table[y= SMS_EMOA_Distance,x=X]{\DiversityTwoWFGTwo};
+	\addlegendentry{SMS-EMOA}
+		
+\addplot[orange,dotted,mark=diamond*] table [y= R2_EMOA_Distance,x=X]{\DiversityTwoWFGTwo};
+	\addlegendentry{R2-EMOA}
+    
+\end{axis}
+\end{tikzpicture}
+
+\begin{tikzpicture}[scale=0.8]
+\begin{axis}[
+title={\textit{\textbf{Diversity of the Distance Variables with Three Objectives in WFG2}}},
+  xlabel=Function Evaluations,
+  ylabel=ADI,
+    ymax=0.6,
+   ytick={ 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6},
+  xticklabel style = {rotate=30},
+  legend style=
+    {cells={anchor=east},legend pos=outer north east,}, nodes={scale=0.8, transform shape}    ,
+  xticklabels from table={\DiversityThreeWFGTwo}{mean},xtick=data]
+
+\addplot[black,mark=o] table [y=VSD_HV_Distance,x=X]{\DiversityThreeWFGTwo};
+	\addlegendentry{VSD-SMS-EMOA}
+\addplot[red,dotted,mark=square*] table [y=VSD_R2_Distance,x=X]{\DiversityThreeWFGTwo};
+	\addlegendentry{VSD-R2-EMOA}
+
+
+\addplot[blue,dotted,mark=triangle*] table[y= SMS_EMOA_Distance,x=X]{\DiversityThreeWFGTwo};
+	\addlegendentry{SMS-EMOA}
+		
+\addplot[orange,dotted,mark=diamond*] table [y= R2_EMOA_Distance,x=X]{\DiversityThreeWFGTwo};
+	\addlegendentry{R2-EMOA}
+    
+\end{axis}
+\end{tikzpicture}
+
+\begin{tikzpicture}[scale=0.8]
+\begin{axis}[
+title={\textit{\textbf{Diversity of the Distance Variables with Two Objectives in DTLZ6}}},
+  xlabel=Function Evaluations,
+  ylabel=ADI,
+    ymax=0.6,
+   ytick={ 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6},
+  xticklabel style = {rotate=30},
+  legend style=
+    {cells={anchor=east},legend pos=outer north east,}, nodes={scale=0.8, transform shape}    ,
+  xticklabels from table={\DiversityTwoDTLZSix}{mean},xtick=data]
+
+\addplot[black,mark=o] table [y=VSD_HV_Distance,x=X]{\DiversityTwoDTLZSix};
+	\addlegendentry{VSD-SMS-EMOA}
+\addplot[red,dotted,mark=square*] table [y=VSD_R2_Distance,x=X]{\DiversityTwoDTLZSix};
+	\addlegendentry{VSD-R2-EMOA}
+
+
+\addplot[blue,dotted,mark=triangle*] table[y= SMS_EMOA_Distance,x=X]{\DiversityTwoDTLZSix};
+	\addlegendentry{SMS-EMOA}
+		
+\addplot[orange,dotted,mark=diamond*] table [y= R2_EMOA_Distance,x=X]{\DiversityTwoDTLZSix};
+	\addlegendentry{R2-EMOA}
+    
+\end{axis}
+\end{tikzpicture}
+
+\begin{tikzpicture}[scale=0.8]
+\begin{axis}[
+title={\textit{\textbf{Diversity of the Distance Variables with Three Objectives in DTLZ6}}},
+  xlabel=Function Evaluations,
+  ylabel=ADI,
+    ymax=0.6,
+   ytick={ 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6},
+  xticklabel style = {rotate=30},
+  legend style=
+    {cells={anchor=east},legend pos=outer north east,}, nodes={scale=0.8, transform shape}    ,
+  xticklabels from table={\DiversityThreeDTLZSix}{mean},xtick=data]
+
+\addplot[black,mark=o] table [y=VSD_HV_Distance,x=X]{\DiversityThreeDTLZSix};
+	\addlegendentry{VSD-SMS-EMOA}
+\addplot[red,dotted,mark=square*] table [y=VSD_R2_Distance,x=X]{\DiversityThreeDTLZSix};
+	\addlegendentry{VSD-R2-EMOA}
+
+
+\addplot[blue,dotted,mark=triangle*] table[y= SMS_EMOA_Distance,x=X]{\DiversityThreeDTLZSix};
+	\addlegendentry{SMS-EMOA}
+		
+\addplot[orange,dotted,mark=diamond*] table [y= R2_EMOA_Distance,x=X]{\DiversityThreeDTLZSix};
+	\addlegendentry{R2-EMOA}
+    
+\end{axis}
+\end{tikzpicture}
+
+\begin{tikzpicture}[scale=0.8]
+\begin{axis}[
+title={\textit{\textbf{Diversity of the Distance Variables with Two Objectives in UF5}}},
+  xlabel=Function Evaluations,
+  ylabel=ADI,
+    ymax=0.6,
+   ytick={ 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6},
+  xticklabel style = {rotate=30},
+  legend style=
+    {cells={anchor=east},legend pos=outer north east,}, nodes={scale=0.8, transform shape}    ,
+  xticklabels from table={\DiversityUFfive}{mean},xtick=data]
+
+\addplot[black,mark=o] table [y=VSD_HV_Distance,x=X]{\DiversityUFfive};
+	\addlegendentry{VSD-SMS-EMOA}
+\addplot[red,dotted,mark=square*] table [y=VSD_R2_Distance,x=X]{\DiversityUFfive};
+	\addlegendentry{VSD-R2-EMOA}
+
+
+\addplot[blue,dotted,mark=triangle*] table[y= SMS_EMOA_Distance,x=X]{\DiversityUFfive};
+	\addlegendentry{SMS-EMOA}
+		
+\addplot[orange,dotted,mark=diamond*] table [y= R2_EMOA_Distance,x=X]{\DiversityUFfive};
+	\addlegendentry{R2-EMOA}
+    
+\end{axis}
+\end{tikzpicture}
+
+\begin{tikzpicture}[scale=0.8]
+\begin{axis}[
+title={\textit{\textbf{Diversity of the Distance Variables with Two Objectives in WFG8}}},
+  xlabel=Function Evaluations,
+  ylabel=ADI,
+    ymax=0.6,
+   ytick={ 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6},
+  xticklabel style = {rotate=30},
+  legend style=
+    {cells={anchor=east},legend pos=outer north east,}, nodes={scale=0.8, transform shape}    ,
+  xticklabels from table={\DiversityTwoWFGEight}{mean},xtick=data]
+
+\addplot[black,mark=o] table [y=VSD_HV_Distance,x=X]{\DiversityTwoWFGEight};
+	\addlegendentry{VSD-SMS-EMOA}
+\addplot[red,dotted,mark=square*] table [y=VSD_R2_Distance,x=X]{\DiversityTwoWFGEight};
+	\addlegendentry{VSD-R2-EMOA}
+
+
+\addplot[blue,dotted,mark=triangle*] table[y= SMS_EMOA_Distance,x=X]{\DiversityTwoWFGEight};
+	\addlegendentry{SMS-EMOA}
+		
+\addplot[orange,dotted,mark=diamond*] table [y= R2_EMOA_Distance,x=X]{\DiversityTwoWFGEight};
+	\addlegendentry{R2-EMOA}
+    
+\end{axis}
+\end{tikzpicture}
+
+\begin{tikzpicture}[scale=0.8]
+\begin{axis}[
+title={\textit{\textbf{Diversity of the Distance Variables with Three Objectives in WFG8}}},
+  xlabel=Function Evaluations,
+  ylabel=ADI,
+    ymax=0.6,
+   ytick={ 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6},
+  xticklabel style = {rotate=30},
+  legend style=
+    {cells={anchor=east},legend pos=outer north east,}, nodes={scale=0.8, transform shape}    ,
+  xticklabels from table={\DiversityThreeWFGEight}{mean},xtick=data]
+
+\addplot[black,mark=o] table [y=VSD_HV_Distance,x=X]{\DiversityThreeWFGEight};
+	\addlegendentry{VSD-SMS-EMOA}
+\addplot[red,dotted,mark=square*] table [y=VSD_R2_Distance,x=X]{\DiversityThreeWFGEight};
+	\addlegendentry{VSD-R2-EMOA}
+
+
+\addplot[blue,dotted,mark=triangle*] table[y= SMS_EMOA_Distance,x=X]{\DiversityThreeWFGEight};
+	\addlegendentry{SMS-EMOA}
+		
+\addplot[orange,dotted,mark=diamond*] table [y= R2_EMOA_Distance,x=X]{\DiversityThreeWFGEight};
+	\addlegendentry{R2-EMOA}
+    
+\end{axis}
+\end{tikzpicture}
+
+\begin{tikzpicture}[scale=0.8]
+\begin{axis}[
+title={\textit{\textbf{Diversity of the Distance Variables with Two Objectives in UF7}}},
+  xlabel=Function Evaluations,
+  ylabel=ADI,
+    ymax=0.6,
+   ytick={ 0, 0.1, 0.2, 0.3, 0.4, 0.5, 0.6},
+  xticklabel style = {rotate=30},
+  legend style=
+    {cells={anchor=east},legend pos=outer north east,}, nodes={scale=0.8, transform shape}    ,
+  xticklabels from table={\DiversityUFseven}{mean},xtick=data]
+
+\addplot[black,mark=o] table [y=VSD_HV_Distance,x=X]{\DiversityUFseven};
+	\addlegendentry{VSD-SMS-EMOA}
+\addplot[red,dotted,mark=square*] table [y=VSD_R2_Distance,x=X]{\DiversityUFseven};
+	\addlegendentry{VSD-R2-EMOA}
+
+
+\addplot[blue,dotted,mark=triangle*] table[y= SMS_EMOA_Distance,x=X]{\DiversityUFseven};
+	\addlegendentry{SMS-EMOA}
+		
+\addplot[orange,dotted,mark=diamond*] table [y= R2_EMOA_Distance,x=X]{\DiversityUFseven};
+	\addlegendentry{R2-EMOA}
+    
+\end{axis}
+\end{tikzpicture}
+
+
+\end{document}
